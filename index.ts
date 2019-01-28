@@ -5,7 +5,7 @@ const { createWriteStream } = require('fs');
 const argv = require('minimist')(process.argv.slice(2));
 
 function parseURL(...args: string[]) {
-	const regex: RegExp = /(http(s)?:\/\/.)?(www\.)?[boards.4channel]{14}\.[org]{3}\b[-a-zA-Z0-9@:%_\+.~#?&//=]{3}[thread]{6}\/[0-9]{6,9}/;
+	const regex: RegExp = /(http(s)?:\/\/.)?(www\.)?[boards.4channel|boards.4chan]{12,14}\.[org]{3}\b[-a-zA-Z0-9@:%_\+.~#?&//=]{3}[thread]{6}\/[0-9]{6,9}/;
 
 	if (args[0].toString().match(regex)) {
 		const url = args[0].match(regex)[0];
