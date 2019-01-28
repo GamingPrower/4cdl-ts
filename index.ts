@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /* tslint:disable:no-var-requires */
 const request = require('request-promise-native');
 const { createWriteStream } = require('fs');

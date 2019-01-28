@@ -1,4 +1,4 @@
-/* tslint:disable:no-var-requires */
+#!/usr/bin/env node
 const request = require('request-promise-native');
 const { createWriteStream } = require('fs');
 const argv = require('minimist')(process.argv.slice(2));
