@@ -1,0 +1,28 @@
+{
+  "name": "4cdlts",
+  "version": "1.0.0",
+  "bin": {
+    "4cdl": "index.js"
+  },
+  "description": "4cdl: 4chan Downloader using Typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GamingPrower/4cdl-ts.git"
+  },
+  "author": "TheBetterEnvy",
+  "license": "MIT",
+  "devDependencies": {
+    "tslint-config-fire": "^1.0.1"
+  },
+  "dependencies": {
+    "@types/minimist": "^1.2.0",
+    "@types/request-promise-native": "^1.0.15",
+    "minimist": "^1.2.0",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.5"
+  }
+}
