@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /* tslint:disable:no-var-requires */
 const request = require('request-promise-native');
+const r = require('request');
 const { createWriteStream } = require('fs');
 const argv = require('minimist')(process.argv.slice(2));
 
@@ -37,12 +38,14 @@ request({ uri: parsedURL[0], json: true })
 	})
 	.then((arr: string[]) => {
 		arr.forEach(el => {
-			request.head(`https://i.4cdn.org/${parsedURL[1]}/${el}`, () => {
-				request({ url: `https://i.4cdn.org/${parsedURL[1]}/${el}`, encoding: null, forever: true })
-					.pipe(createWriteStream(el))
-					.on('close', () => { console.log('File Downloaded!'); })
-					.on('error', (e: Error) => { console.log(e); });
-			});
+			// https://github.com/request/request-promise
+			// "However, STREAMING THE RESPONSE (e.g. .pipe(...)) is DISCOURAGED...Use the original Request library for that."
+				r.head(`https://i.4cdn.org/${parsedURL[1]}/${el}`, () => {
+					r({ url: `https://i.4cdn.org/${parsedURL[1]}/${el}`, encoding: null, forever: true })
+						.on('error', (e: Error) => { console.error(`File Download ${e}`); })
+						.pipe(createWriteStream(el))
+						.on('close', () => { console.log('File Downloaded!'); });
+				});
 		});
 	})
 	.catch((error: Error) => console.log(error));
